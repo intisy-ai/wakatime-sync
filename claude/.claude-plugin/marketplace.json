@@ -1,0 +1,31 @@
+{
+  "name": "wakatime",
+  "metadata": {
+    "description": "WakaTime plugin for Claude Code - Track your AI usage, lines of code generated, and time spent prompting AI"
+  },
+  "owner": {
+    "name": "WakaTime"
+  },
+  "plugins": [
+    {
+      "name": "claude-code-wakatime",
+      "source": "./",
+      "description": "WakaTime plugin for Claude Code - Track your AI usage, lines of code generated, and time spent prompting AI",
+      "version": "4.1.0",
+      "homepage": "https://github.com/wakatime/claude-code-wakatime",
+      "repository": "https://github.com/wakatime/claude-code-wakatime",
+      "license": "BSD-3-Clause",
+      "keywords": [
+        "time-tracking",
+        "hooks",
+        "productivity",
+        "metrics"
+      ],
+      "category": "productivity",
+      "tags": [
+        "productivity",
+        "metrics"
+      ]
+    }
+  ]
+}
