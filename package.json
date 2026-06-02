@@ -1,5 +1,5 @@
 {
-  "name": "wakatime",
+  "name": "plugin-wakatime",
   "version": "1.3.7",
   "description": "WakaTime plugin for OpenCode and Claude Code, automatically tracking time spent coding.",
   "main": "dist/index.js",
