@@ -134,7 +134,7 @@ export function extractFileChanges(
           info: {
             additions: 0,
             deletions: 0,
-            isWrite: !exists, // New file creation
+            isWrite: !exists,
           },
         });
       }
@@ -465,7 +465,7 @@ export const plugin: Plugin = async (ctx) => {
           opencodeVersion,
           opencodeClient,
           true,
-        ); // Force send and await
+        );
       }
     },
   };
