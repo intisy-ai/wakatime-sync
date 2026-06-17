@@ -8,7 +8,7 @@
   "author": "intisy",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/intisy/wakatime.git"
+    "url": "git+https://github.com/intisy/wakatime-sync.git"
   },
   "keywords": ["opencode", "claude", "wakatime", "plugin", "time", "tracking"],
   "files": ["dist/", "README.md", "LICENSE"],
