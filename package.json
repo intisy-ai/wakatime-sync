@@ -15,13 +15,14 @@
   "files": ["dist/", "README.md", "LICENSE"],
   "engines": { "node": ">=20.0.0" },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --noEmit && node build.mjs",
     "test": "vitest run",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@opencode-ai/plugin": "^0.15.30",
     "@types/node": "^20.0.0",
+    "esbuild": "^0.25.12",
     "typescript": "^5.4.0",
     "vitest": "^2.0.0"
   }

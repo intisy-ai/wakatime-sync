@@ -1,19 +1,13 @@
-import { readFileSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-
-let CACHED_VERSION: string | null = null;
+// Version is inlined at build time by esbuild (define __WAKATIME_VERSION__).
+// The plugin ships as a single bundled file, so there is no package.json to read
+// next to it at runtime.
+declare const __WAKATIME_VERSION__: string | undefined;
 
 export function getVersion(): string {
-  if (CACHED_VERSION !== null) return CACHED_VERSION;
   try {
-    const here = dirname(fileURLToPath(import.meta.url));
-    const pkg = JSON.parse(
-      readFileSync(join(here, "..", "package.json"), "utf-8"),
-    );
-    CACHED_VERSION = pkg.version ?? "unknown";
+    if (typeof __WAKATIME_VERSION__ !== "undefined") return __WAKATIME_VERSION__;
   } catch {
-    CACHED_VERSION = "unknown";
+    /* not defined in this context */
   }
-  return CACHED_VERSION as string;
+  return "unknown";
 }
