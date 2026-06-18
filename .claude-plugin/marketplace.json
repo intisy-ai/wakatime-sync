@@ -1,0 +1,23 @@
+{
+  "name": "wakatime-sync",
+  "metadata": {
+    "description": "WakaTime plugin for OpenCode and Claude Code, automatically tracking time spent coding."
+  },
+  "owner": {
+    "name": "intisy"
+  },
+  "plugins": [
+    {
+      "name": "wakatime-sync",
+      "source": "./",
+      "description": "WakaTime plugin for OpenCode and Claude Code, automatically tracking time spent coding.",
+      "version": "1.3.7",
+      "homepage": "https://github.com/intisy/wakatime-sync",
+      "repository": "https://github.com/intisy/wakatime-sync",
+      "license": "MIT",
+      "category": "productivity",
+      "keywords": ["opencode", "claude", "wakatime", "time-tracking", "productivity"],
+      "tags": ["productivity", "metrics"]
+    }
+  ]
+}
