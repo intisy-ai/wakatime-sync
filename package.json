@@ -1,6 +1,6 @@
 {
   "name": "wakatime-sync",
-  "version": "1.3.7",
+  "version": "1.4.0",
   "description": "WakaTime plugin for OpenCode and Claude Code, automatically tracking time spent coding.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,9 +11,22 @@
     "type": "git",
     "url": "git+https://github.com/intisy/wakatime-sync.git"
   },
-  "keywords": ["opencode", "claude", "wakatime", "plugin", "time", "tracking"],
-  "files": ["dist/", "README.md", "LICENSE"],
-  "engines": { "node": ">=20.0.0" },
+  "keywords": [
+    "opencode",
+    "claude",
+    "wakatime",
+    "plugin",
+    "time",
+    "tracking"
+  ],
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
     "test": "vitest run",
