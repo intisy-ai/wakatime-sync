@@ -1,6 +1,6 @@
 {
   "name": "wakatime-sync",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "WakaTime plugin for OpenCode and Claude Code, automatically tracking time spent coding.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
