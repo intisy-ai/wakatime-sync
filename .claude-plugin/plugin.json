@@ -5,8 +5,8 @@
   "author": {
     "name": "intisy"
   },
-  "homepage": "https://github.com/intisy/wakatime-sync",
-  "repository": "https://github.com/intisy/wakatime-sync",
+  "homepage": "https://github.com/intisy-ai/wakatime-sync",
+  "repository": "https://github.com/intisy-ai/wakatime-sync",
   "license": "MIT",
   "keywords": ["opencode", "claude", "wakatime", "time-tracking", "productivity"]
 }

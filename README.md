@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/wakatime-sync)](https://www.npmjs.com/package/wakatime-sync)
 [![npm downloads](https://img.shields.io/npm/dm/wakatime-sync)](https://www.npmjs.com/package/wakatime-sync)
-[![CI](https://github.com/intisy/wakatime-sync/actions/workflows/publish.yml/badge.svg)](https://github.com/intisy/wakatime-sync/actions/workflows/publish.yml)
+[![CI](https://github.com/intisy-ai/wakatime-sync/actions/workflows/publish.yml/badge.svg)](https://github.com/intisy-ai/wakatime-sync/actions/workflows/publish.yml)
 
 WakaTime integration for both OpenCode and Claude Code from a single codebase. It automatically records the time you spend coding with AI — tracking edited files, line changes, and project activity — and reports it to WakaTime via the official `wakatime-cli`.
 
@@ -51,7 +51,7 @@ flowchart TD
 ### Via plugin-updater (recommended)
 Add to `~/.config/opencode/config/plugins.json`:
 ```json
-[{ "name": "wakatime-sync", "url": "https://github.com/intisy/wakatime-sync", "enabled": true }]
+[{ "name": "wakatime-sync", "url": "https://github.com/intisy-ai/wakatime-sync", "enabled": true }]
 ```
 
 ### Via npm
