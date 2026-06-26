@@ -1,11 +1,11 @@
-// wakatime-sync config + logging — delegated to the shared core-log library so
-// every plugin uses one logging system. Public API kept stable for logger.ts.
+// wakatime-sync config + logging — delegated to the shared core library so
+// every plugin uses one config + logging system. Public API kept stable for logger.ts.
 import {
   getAppConfigDir,
   isLoggingEnabled as coreIsLoggingEnabled,
   loadConfig,
   makeWriteLog,
-} from "../core-log/src/index.js";
+} from "../core/src/index.js";
 
 const PACKAGE_NAME = "wakatime-sync";
 

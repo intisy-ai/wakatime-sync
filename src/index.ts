@@ -1,7 +1,9 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { Hooks, Plugin } from "@opencode-ai/plugin";
+import { deployCommands } from "../core/src/index.js";
 import { LogLevel, logger } from "./logger.js";
+import { WAKATIME_COMMANDS, maybeRunCli } from "./commands.js";
 import {
   initState,
   shouldSendHeartbeat,
@@ -16,9 +18,22 @@ import {
 /**
  * Single dual-app entry. Claude Code launches this file as a hook process
  * (`node dist/index.js`), whose path contains ".claude"; OpenCode imports it
- * in-process and invokes the default-exported plugin. Detect via argv per the
- * repo standard, and run the matching code path.
+ * in-process and invokes the default-exported plugin. The slash-commands shell
+ * back into this same file as `node <bundle> <action>` — handle that first and
+ * exit, so command/config invocations never start the plugin or the hook.
  */
+if (await maybeRunCli("wakatime-sync")) {
+  process.exit(0);
+}
+
+// Normal load: keep the cross-app slash-commands deployed (idempotent), then
+// run the matching app's code path.
+try {
+  deployCommands("wakatime-sync", WAKATIME_COMMANDS);
+} catch {
+  /* command deploy is best-effort — never block the plugin */
+}
+
 const isClaude = process.argv.join(" ").includes("claude");
 if (isClaude) {
   import("./claude/hook.js").then((m) => m.runClaudeHook());

@@ -1,3 +1,4 @@
-[submodule "core-log"]
-	path = core-log
-	url = https://github.com/intisy-ai/core-log.git
+[submodule "core"]
+	path = core
+	url = https://github.com/intisy-ai/core
+	branch = main

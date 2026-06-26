@@ -43,8 +43,9 @@ flowchart TD
 
 ## Structure
 
-- `src/` — TypeScript source (shared core + `claude/` hook handler + OpenCode plugin)
-- `dist/` — Compiled output (`dist/index.js` is the single dual-app entry)
+- `src/` — TypeScript source (OpenCode plugin + `claude/` hook handler + `commands.ts`)
+- `core/` — git submodule ([`intisy-ai/core`](https://github.com/intisy-ai/core)): shared config, logging, app detection, and the cross-app command framework — bundled into `dist/index.js` by esbuild
+- `dist/` — Compiled output (`dist/index.js` is the single dual-app entry, generated; not committed)
 
 ## Installation
 
@@ -75,6 +76,27 @@ Config file: `~/.config/opencode/config/wakatime-sync.json` (preferred) or `~/.c
   "logging": true
 }
 ```
+
+| Key | Type | Default | Description |
+| --- | --- | --- | --- |
+| `logging` | boolean | `true` | Write a per-session log file. Set `false` to disable. |
+
+Every key is also editable from chat via `/wakatime-sync-config` (see Commands).
+
+## Commands
+
+Deployed automatically to both apps on load (`~/.config/opencode/command/` and `~/.claude/commands/`):
+
+| Command | Description |
+| --- | --- |
+| `/wakatime` | Show today's WakaTime coding total (via the installed `wakatime-cli --today`). |
+| `/wakatime-sync-config` | View/change any config key: `list`, `get <key>`, `set <key> <value>`. 100% of the config is reachable here. |
+
+## Dependencies
+
+- **`core`** (required) — bundled git submodule; no separate install.
+- **`wakatime-cli`** (required, auto-managed) — downloaded and kept up to date automatically on first run; no manual install needed.
+- **`@opencode-ai/plugin`** (peer, type-only) — provided by OpenCode at runtime; not needed for Claude Code.
 
 ## Logging
 
