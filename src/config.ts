@@ -4,14 +4,14 @@ import {
   getAppConfigDir,
   isLoggingEnabled as coreIsLoggingEnabled,
   loadConfig,
-  ensureConfig,
+  defineConfig,
   makeWriteLog,
 } from "../core/src/index.js";
 
 const PACKAGE_NAME = "wakatime-sync";
 
-// materialize config/wakatime-sync.json with defaults on load, so it's discoverable
-ensureConfig(PACKAGE_NAME, { logging: true });
+// register defaults so the loader can discover + edit them (writes no file on load)
+defineConfig(PACKAGE_NAME, { logging: true });
 
 export { getAppConfigDir };
 
