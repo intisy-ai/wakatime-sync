@@ -4,6 +4,7 @@ import { createWriteStream } from "node:fs";
 import * as https from "node:https";
 import * as os from "node:os";
 import * as path from "node:path";
+import { getPluginConfig } from "./config.js";
 import { logger } from "./logger.js";
 import { getWakatimeResourcesDir } from "./wakatime-paths.js";
 
@@ -26,7 +27,11 @@ const GITHUB_RELEASES_URL =
 const GITHUB_DOWNLOAD_URL =
   "https://github.com/wakatime/wakatime-cli/releases/latest/download";
 
-const UPDATE_CHECK_INTERVAL = 4 * 60 * 60 * 1000;
+function getUpdateCheckInterval(): number {
+  const cfg = getPluginConfig();
+  const hours = Number(cfg.cli_update_interval_hours ?? 4);
+  return hours * 60 * 60 * 1000;
+}
 
 interface CliState {
   lastChecked?: number;
@@ -136,7 +141,7 @@ export class Dependencies {
     const state = this.readState();
     if (!state.lastChecked) return true;
 
-    return Date.now() - state.lastChecked > UPDATE_CHECK_INTERVAL;
+    return Date.now() - state.lastChecked > getUpdateCheckInterval();
   }
 
   public async checkAndInstallCli(): Promise<void> {

@@ -1,6 +1,7 @@
 import * as fs from "node:fs";
 import { ensureCliInstalled, syncAiActivity } from "../wakatime.js";
 import { getWakatimeConfigFilePath } from "../wakatime-paths.js";
+import { applyPluginConfigToWakatimeCfg } from "../wakatime-cfg.js";
 import { LogLevel, logger } from "../logger.js";
 import {
   getClaudeVersion,
@@ -26,6 +27,7 @@ function applyDebugSetting(): void {
  */
 export async function runClaudeHook(): Promise<void> {
   applyDebugSetting();
+  applyPluginConfigToWakatimeCfg();
 
   const input = parseInput();
   try {

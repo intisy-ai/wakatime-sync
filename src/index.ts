@@ -14,6 +14,7 @@ import {
   getWakatimeConfigFilePath,
   getWakatimeResourcesDir,
 } from "./wakatime-paths.js";
+import { applyPluginConfigToWakatimeCfg } from "./wakatime-cfg.js";
 
 /**
  * Single dual-app entry. Claude Code launches this file as a hook process
@@ -359,6 +360,8 @@ export const plugin: Plugin = async (ctx) => {
   logger.debug(
     `OpenCode client: ${opencodeClient}, version: ${opencodeVersion}`,
   );
+
+  applyPluginConfigToWakatimeCfg();
 
   initState(projectFolder);
 

@@ -1,6 +1,7 @@
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 import * as path from "node:path";
+import { getPluginConfig } from "./config.js";
 import { getWakatimeResourcesDir } from "./wakatime-paths.js";
 
 export interface State {
@@ -54,7 +55,9 @@ export function shouldSendHeartbeat(force: boolean = false): boolean {
     const state = readState();
     const lastHeartbeat = state.lastHeartbeatAt ?? 0;
 
-    return timestamp() - lastHeartbeat >= 60;
+    const cfg = getPluginConfig();
+    const intervalSeconds = Number(cfg.heartbeat_interval_seconds ?? 60);
+    return timestamp() - lastHeartbeat >= intervalSeconds;
   } catch {
     return true;
   }
