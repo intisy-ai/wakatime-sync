@@ -109,9 +109,10 @@ function serializeIni(ini: ParsedIni): string {
 // ── Public API ───────────────────────────────────────────────────────────────
 
 /**
- * If any of api_key / api_url / hide_filenames is set in the plugin config,
- * merge those values into ~/.wakatime.cfg (or $WAKATIME_HOME/.wakatime.cfg)
- * under [settings], preserving all other sections and keys.
+ * If any of api_key / api_url / hide_filenames / proxy / hostname /
+ * hide_project_names is set in the plugin config, merge those values into
+ * ~/.wakatime.cfg (or $WAKATIME_HOME/.wakatime.cfg) under [settings],
+ * preserving all other sections and keys.
  *
  * If none of those keys carry a value, the file is not touched.
  */
@@ -121,8 +122,11 @@ export function applyPluginConfigToWakatimeCfg(): void {
   const apiKey = String(cfg.api_key ?? "").trim();
   const apiUrl = String(cfg.api_url ?? "").trim();
   const hideFilenames = cfg.hide_filenames === true || cfg.hide_filenames === "true";
+  const proxy = String(cfg.proxy ?? "").trim();
+  const hostname = String(cfg.hostname ?? "").trim();
+  const hideProjectNames = cfg.hide_project_names === true || cfg.hide_project_names === "true";
 
-  if (!apiKey && !apiUrl && !hideFilenames) {
+  if (!apiKey && !apiUrl && !hideFilenames && !proxy && !hostname && !hideProjectNames) {
     return; // nothing to write — leave the file alone
   }
 
@@ -140,6 +144,9 @@ export function applyPluginConfigToWakatimeCfg(): void {
   if (apiKey) setIniKey(ini, "settings", "api_key", apiKey);
   if (apiUrl) setIniKey(ini, "settings", "api_url", apiUrl);
   if (hideFilenames) setIniKey(ini, "settings", "hidefilenames", "true");
+  if (proxy) setIniKey(ini, "settings", "proxy", proxy);
+  if (hostname) setIniKey(ini, "settings", "hostname", hostname);
+  if (hideProjectNames) setIniKey(ini, "settings", "hide_project_names", "true");
 
   const merged = serializeIni(ini);
 

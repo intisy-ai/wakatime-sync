@@ -23,6 +23,12 @@ defineConfig(PACKAGE_NAME, {
   api_url: "",
   // When true, sets hidefilenames = true in ~/.wakatime.cfg [settings] on activation.
   hide_filenames: false,
+  // When non-empty, written into ~/.wakatime.cfg [settings] proxy on activation.
+  proxy: "",
+  // When non-empty, written into ~/.wakatime.cfg [settings] hostname on activation.
+  hostname: "",
+  // When true, sets hide_project_names = true in ~/.wakatime.cfg [settings] on activation.
+  hide_project_names: false,
 });
 
 export { getAppConfigDir };
