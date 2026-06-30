@@ -2,6 +2,7 @@ import * as fs from "node:fs";
 import * as os from "node:os";
 import * as path from "node:path";
 import { logger } from "../logger.js";
+import { getPluginConfig } from "../config.js";
 import type { Input, State, TranscriptLog } from "./types.js";
 
 export function parseInput(): Input | undefined {
@@ -45,7 +46,8 @@ function getStateFile(inp: Input): string {
 }
 
 /**
- * Per-transcript 60s rate limit. Returns true when no recent heartbeat exists.
+ * Per-transcript heartbeat rate limit (heartbeat_interval_seconds, default 60s).
+ * Returns true when no recent heartbeat exists.
  */
 export function shouldSendHeartbeat(inp?: Input): boolean {
   if (!inp) return false;
@@ -54,7 +56,8 @@ export function shouldSendHeartbeat(inp?: Input): boolean {
     const last =
       (JSON.parse(fs.readFileSync(getStateFile(inp), "utf-8")) as State)
         .lastHeartbeatAt ?? timestamp();
-    return timestamp() - last >= 60;
+    const intervalSeconds = Number(getPluginConfig().heartbeat_interval_seconds ?? 60);
+    return timestamp() - last >= intervalSeconds;
   } catch {
     return true;
   }
