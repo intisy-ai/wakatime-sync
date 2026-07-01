@@ -11,4 +11,5 @@ runPluginContract({
   commands: ["wakatime", "wakatime-sync-config"],
   deploy: "load",
   actions: [["today"]],
+  readme: true,
 });

@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit && node build.mjs",
+    "postbuild": "node dist/index.js readme",
     "test": "npm run build && vitest run",
     "prepublishOnly": "npm run build"
   },
