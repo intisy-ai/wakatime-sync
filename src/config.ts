@@ -19,8 +19,10 @@ defineConfig(PACKAGE_NAME, {
   cli_update_interval_hours: 4,
   // When non-empty, written into ~/.wakatime.cfg [settings] api_key on activation.
   api_key: "",
-  // When non-empty, written into ~/.wakatime.cfg [settings] api_url on activation.
-  api_url: "",
+  // WakaTime's own default API endpoint. Shown as the default so it's documented;
+  // only written into ~/.wakatime.cfg when the user explicitly sets it (the merge
+  // reads the on-disk config, not this default), so it never clobbers an existing cfg.
+  api_url: "https://api.wakatime.com/api/v1",
   // When true, sets hidefilenames = true in ~/.wakatime.cfg [settings] on activation.
   hide_filenames: false,
   // When non-empty, written into ~/.wakatime.cfg [settings] proxy on activation.
